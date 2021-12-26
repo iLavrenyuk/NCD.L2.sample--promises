@@ -4,31 +4,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
         gray: {
-          400: '#BABABA',
-          900: '#171717',
+          500: '#272739',
+          600: '#343346',
+          700: '#2D2C41',
+          800: '#313045',
         },
         blue: {
-          300: '#22DCF5',
-          400: '#3A9BD5',
+          400: '#5DAAE2',
+          500: '#2A65FC',
         },
-      },
-      width: {
-        60: '60px',
-        74: '74px',
-        374: '374px',
-      },
-      height: {
-        30: '30px',
-        37: '37px',
+        orange: {
+          400: '#FF7A00',
+          500: '#DC2828',
+        },
       },
     },
   },
   variants: {
-    extend: {
-      backgroundColor: ['active'],
-      scale: ['active', 'hover'],
-    },
+    extend: {},
   },
   plugins: [],
 };
