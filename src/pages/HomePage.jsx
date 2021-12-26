@@ -1,5 +1,15 @@
 import React from 'react';
+import { Header } from '../components/Header';
 
 export const HomePage = () => {
-  return <>Home</>;
+  return (
+    <>
+      <Header />
+      {/* <SecondSection />
+      <ThirdSection />
+      <FourthSection />
+      <FifthSection />
+      <Footer /> */}
+    </>
+  );
 };
