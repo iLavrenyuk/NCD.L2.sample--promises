@@ -1,15 +1,20 @@
 import React from 'react';
-import { Header } from '../components/Header';
+import { Footer } from '../components/home/Footer';
+import { Header } from '../components/home/Header';
+import { ThirdSection } from '../components/home/ThirdSection';
+import { FifthSection } from '../components/home/FifthSection';
+import { SecondSection } from '../components/home/SecondSection';
+import { FourthSection } from '../components/home/FourthSection';
 
 export const HomePage = () => {
   return (
     <>
       <Header />
-      {/* <SecondSection />
+      <SecondSection />
       <ThirdSection />
       <FourthSection />
       <FifthSection />
-      <Footer /> */}
+      <Footer />
     </>
   );
 };

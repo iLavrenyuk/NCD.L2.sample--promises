@@ -1,40 +1,48 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { routes } from '../../../router/routes';
+import { signIn } from '../../../services/near';
+import { HashLink } from 'react-router-hash-link';
 
 export const Header = () => {
+  const handleSignIn = () => {
+    signIn(window.location.origin + routes.Dashboard);
+  };
+
   return (
     <header>
       <div className="w-full lg:h-screen bg-gray-800">
         <div className="w-full h-full bg-text">
           <div className="relative container mx-auto px-6">
             <div className="flex items-center justify-between py-10 text-white">
-              <a href="#" className="flex items-center text-2xl md:text-3xl font-bold">
+              <Link to={routes.Home} className="flex items-center text-2xl md:text-3xl font-bold">
                 <div className="border-r pr-3 md:pr-4 mr-4 md:mr-5">
-                  <img src={require('../../assets/img/near_logo_stack1.png')} alt="" />
+                  <img src={require('../../../assets/img/near_logo_stack1.png')} alt="" />
                 </div>
                 Promises
-              </a>
+              </Link>
 
               <div className="hidden lg:block">
                 <ul className="flex items-center space-x-8 text-lg">
                   <li className=" hover:text-blue-400">
-                    <a click="scrollMeTo('#about')">about tracker</a>
+                    <HashLink to="/#about">about tracker</HashLink>
                   </li>
                   <li className=" hover:text-blue-400">
-                    <a click="scrollMeTo('receive')">what you receive</a>
+                    <HashLink to="/#receive">what you receive</HashLink>
                   </li>
                   <li className=" hover:text-blue-400">
-                    <a click="scrollMeTo('howitworks')">how it works</a>
+                    <HashLink to="/#howitworks">how it works</HashLink>
                   </li>
                 </ul>
               </div>
 
               <div className="flex items-center justify-between">
-                <button click="signIn" className="hidden md:flex btn-blue">
+                <button onClick={handleSignIn} className="hidden md:flex btn-blue">
                   Login with NEAR
-                  <img src={require('../../assets/img/near_logo_stack21.png')} className="ml-3" alt="" />
+                  <img src={require('../../../assets/img/near_logo_stack21.png')} className="ml-3" alt="" />
                 </button>
                 <button className="ml-2 lg:hidden">
-                  <img src={require('../../assets/img/menu.png')} alt="" />
+                  <img src={require('../../../assets/img/menu.png')} alt="" />
                 </button>
               </div>
             </div>
@@ -53,17 +61,21 @@ export const Header = () => {
                   aliquam eleifend pulvinar porttitor. Amet id pharetra eu sem purus.
                 </p>
                 <div className="flex flex-col lg:flex-row justify-center lg:justify-start items-center mt-12">
-                  <a href="#" className="btn-blue">
+                  <Link to={routes.Dashboard} className="btn-blue">
                     Try tracker right now
-                  </a>
-                  <a href="#" className="mt-4 lg:ml-12 hover:text-blue-400">
+                  </Link>
+                  <Link to={routes.Dashboard} className="mt-4 lg:ml-12 hover:text-blue-400">
                     Explore →{' '}
-                  </a>
+                  </Link>
                 </div>
               </div>
 
               <div className="w-full lg:w-1/2">
-                <img src={require('../../assets/img/Photolayer.png')} alt="man" className="xl:-mt-16 ml-auto h-full" />
+                <img
+                  src={require('../../../assets/img/Photolayer.png')}
+                  alt="man"
+                  className="xl:-mt-16 ml-auto h-full"
+                />
               </div>
             </div>
           </div>
