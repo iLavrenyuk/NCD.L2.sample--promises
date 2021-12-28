@@ -1,11 +1,39 @@
 import React, { useState } from 'react';
+import { useStore } from '../../../store';
 import { makePromise } from '../../../services/near';
 
 export const CreatePromiseForm = ({ setIsOpenForm }) => {
-  const [textInput, setTextInput] = useState('');
+  const { setApiError } = useStore();
 
-  const handleCreatePromise = () => {
-    makePromise({ what: textInput });
+  const [textInput, setTextInput] = useState('');
+  const [messageIsSent, setMessageIsSent] = useState(false);
+  const [sentError, setSentError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleCreatePromise = async () => {
+    try {
+      setIsLoading(true);
+      await makePromise({ what: textInput });
+      setIsLoading(false);
+      setMessageIsSent(true);
+    } catch (error) {
+      setApiError(error);
+      setIsLoading(false);
+      setSentError(true);
+    }
+  };
+
+  const textButton = () => {
+    switch (true) {
+      case isLoading:
+        return 'sending...';
+      case sentError:
+        return 'error :(';
+      case messageIsSent:
+        return 'Created';
+      default:
+        return 'Yes, I do it!';
+    }
   };
 
   return (
@@ -48,7 +76,7 @@ export const CreatePromiseForm = ({ setIsOpenForm }) => {
                 />
 
                 <button onClick={handleCreatePromise} className="btn-blue text-white w-full mt-7 py-3">
-                  Yes, I do it!
+                  {textButton()}
                 </button>
 
                 <p className="text-gray-400 mt-8">
