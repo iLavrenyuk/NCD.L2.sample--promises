@@ -27,22 +27,16 @@ export const signOut = () => {
 export const getPromises = (target) => {
   const CONTRACT_ID = localStorage.getItem('CONTRACT_ID');
   const accountId = wallet.getAccountId();
-  const res = wallet.account().functionCall({
-    contractId: CONTRACT_ID,
-    methodName: 'getPromises',
-    gas,
-    args: { accountId, target },
-  });
-  return res;
+  return wallet.account().viewFunction(CONTRACT_ID, 'getPromises', { accountId, target });
 };
 
 //function to add new promise
-export const makeExtendedPromise = async ({ what, viewers, voters }) => {
+export const makePromise = ({ what }) => {
   const CONTRACT_ID = localStorage.getItem('CONTRACT_ID');
   return wallet.account().functionCall({
     contractId: CONTRACT_ID,
-    methodName: 'makeExtendedPromise',
+    methodName: 'makePromise',
     gas,
-    args: { what, viewers, voters },
+    args: { what },
   });
 };
